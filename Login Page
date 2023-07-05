@@ -1,0 +1,26 @@
+from tkinter import *
+from functools import *
+def validateLogin(username,password):
+    print("username entered:-",username.get())
+    print("password entered:-",password.get())
+
+#creating a window
+win=Tk()
+win.geometry("400x400")
+win.title("Login page")
+
+#username lable and text box
+u_label=Label(win,text="User name",fg="Black",font=("Arial",15)).grid(row=0,column=0)
+username=StringVar()
+u_Entry=Entry(win,textvariable=username).grid(row=0,column=1)
+
+#password lable and text entry box
+p_label=Label(win,text="Password",fg="Black",font=("Arial",15)).grid(row=1,column=0)
+password=StringVar()
+p_Entry=Entry(win,textvariable=password,show="*").grid(row=1,column=1)
+
+validateLogin=partial(validateLogin,username,password)
+
+#Login button
+LoginButton=Button(win,text="Login",fg="Black",font=("Arial",15),command=validateLogin).grid(row=4,column=0)
+mainloop()
