@@ -1,0 +1,21 @@
+#import tkinter library
+from tkinter import *
+#create instance of an tkinter window
+s_win=Tk()
+#set title to splsh window
+s_win.title("Splash Screen")
+#set height and width of splash window
+s_win.geometry("700x200")
+#remove task bar or title bar
+s_win.overrideredirect(True)
+#Deine the label on splash window
+s_label=Label(s_win,text="Splash Window",fg="green",font=("Times New Roman",50)).pack(pady=20)
+def mainWin(): #main window
+ s_win.destroy()
+ win=Tk()
+ win.title('Main Window')
+ win.geometry("700x200")
+ win_label=Label(win,text="Main window",font=("Arial",50),fg="red").pack(pady=20)
+#setting Timer to splash window
+s_win.after(2000,mainWin)
+mainloop()
