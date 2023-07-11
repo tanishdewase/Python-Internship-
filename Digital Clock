@@ -1,0 +1,43 @@
+from tkinter import *
+from tkinter.ttk import *
+from time import strftime
+import tkinter as tk
+
+root =tk.Tk()
+root.title('Digital Clock')
+root.geometry("700x700")
+root.resizable(0, 0)
+
+label = tk.Label(root, text="24 Hour Clock", padx=16, pady=16, bd=8, fg="black",font=("Arial", 40))
+label.pack()
+
+
+def time():
+    hour = strftime('%H')
+    min = strftime('%M')
+    sec = strftime('%S')
+    if int(hour) > 12:
+        hour = int(hour) - 12
+    lbl1.config(text=hour)
+    lbl2.config(text=min)
+    lbl3.config(text=sec)
+    hour = strftime('%H')
+    min = strftime('%M')
+    sec =strftime('%S')
+
+    string = strftime('%H:%M:%S %p')
+    lbl.config(text=string)
+    lbl.after(1000, time)
+
+lbl = Label(root,font=("Arial", 80),  foreground='black')
+lbl1 = Label(root,font=("Arial", 80),  foreground='black')
+lbl2 = Label(root,font=("Arial", 80),  foreground='black')
+lbl3 = Label(root, font=("Arial", 80),  foreground='black')
+
+lbl.pack(anchor='ne')
+lbl1.pack(anchor='center')
+lbl2.pack(anchor='center')
+lbl3.pack(anchor='center')
+
+time()
+root.mainloop()
